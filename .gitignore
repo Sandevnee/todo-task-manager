@@ -1,0 +1,15 @@
+# Dependencies
+node_modules/
+
+# Environment variables
+.env
+
+# Prisma
+*.db
+
+# Build outputs
+dist/
+build/
+
+# OS
+.DS_Store
