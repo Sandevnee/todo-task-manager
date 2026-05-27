@@ -38,7 +38,7 @@ const App = () => {
   return (
     <>
       <div className="app-header">
-        <h1 className="app-title">Todo Task Manager</h1>
+        <h1 className="app-title">Task Manager</h1>
         <p className="app-subtitle">Stay organized, get things done</p>
       </div>
       <div className="app-container">
