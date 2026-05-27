@@ -29,7 +29,7 @@ const TaskForm = ({ onTaskCreated }) => {
 
   return (
     <div className="task-form-container">
-      <h2>Add a Task</h2>
+      <h2>Create New Task</h2>
       {error && <p className="error-message">{error}</p>}
       <form onSubmit={handleSubmit}>
         <div className="form-group">
