@@ -13,9 +13,9 @@ const TaskList = ({ tasks, onMarkComplete }) => {
         </p>
 
         {tasks.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 bg-[#09070f] rounded-xl border border-purple-900/50">
-            <div className="p-4 rounded-xl bg-[#1a1335] mb-4 opacity-50">
-              <ListTodo className="w-8 h-8 text-purple-300/50" />
+          <div className="flex flex-col items-center justify-center flex-1 py-8 md:py-16 bg-[#09070f] rounded-xl border border-purple-900/50">
+            <div className="p-3 md:p-4 rounded-xl bg-[#1a1335] mb-3 md:mb-4 opacity-50">
+              <ListTodo className="w-6 h-6 md:w-8 md:h-8 text-purple-300/50" />
             </div>
             <p className="text-purple-300/50 text-sm">No active tasks yet</p>
             <p className="text-purple-300/30 text-xs mt-1">
@@ -23,7 +23,7 @@ const TaskList = ({ tasks, onMarkComplete }) => {
             </p>
           </div>
         ) : (
-          <div className="flex flex-col gap-3">
+          <div className="flex flex-col gap-2 md:gap-3">
             {tasks.map((task) => (
               <TaskCard
                 key={task.id}
