@@ -111,19 +111,19 @@ const App = () => {
       
 
       {/* Header */}
-      <div className="relative z-10 flex flex-col items-center pt-10 pb-8">
+      <div className="relative z-10 flex flex-col items-center pt-6 pb-6 px-4">
         <div className="flex items-center gap-3 mb-2">
           <div className="p-2 rounded-xl bg-gradient-to-br from-purple-500 to-violet-600 shadow-lg shadow-purple-500/30">
-            <ListTodo className="text-white w-6 h-6" />
+            <ListTodo className="text-white w-5 h-5 md:w-6 md:h-6" />
           </div>
-          <h1 className="text-3xl font-bold text-white">Task Manager</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-white">Task Manager</h1>
         </div>
-        <p className="text-purple-200/60 text-sm">Stay Organized. Stay Ahead.</p>
+        <p className="text-purple-200/60 text-xs md:text-sm">Stay Organized. Stay Ahead.</p>
       </div>
 
       {/* Main Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-6 pb-12">
-        <div className="flex gap-6 items-start w-full">
+      <div className="relative z-10 flex-1 w-full max-w-5xl mx-auto px-4 md:px-6 pb-6 flex flex-col">
+        <div className="flex flex-col md:flex-row gap-4 md:gap-6 flex-1">
           <TaskForm onTaskCreated={handleTaskCreated} />
           <TaskList tasks={tasks} onMarkComplete={handleMarkComplete} />
         </div>

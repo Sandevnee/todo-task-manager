@@ -41,14 +41,14 @@ const TaskForm = ({ onTaskCreated }) => {
   };
 
   return (
-    <div className="relative flex-1 bg-[#1a1335]/95 border border-purple-900/40 rounded-2xl p-6 shadow-xl hover:shadow-purple-500/10 hover:border-purple-500/40 transition-all duration-300">
-      <h2 className="text-white text-lg font-semibold mb-6">
+    <div className="relative flex-1 bg-[#1a1335]/95 border border-purple-900/40 rounded-2xl p-4 md:p-6 shadow-xl hover:shadow-purple-500/10 hover:border-purple-500/40 transition-all duration-300 flex flex-col">
+      <h2 className="text-white text-base md:text-lg font-semibold mb-4 md:mb-6">
         Create New Task
       </h2>
 
-      <form onSubmit={handleSubmit}>
-        <div className="mb-4">
-          <label className="block text-purple-100 text-sm font-medium mb-2">
+      <form onSubmit={handleSubmit} className="flex flex-col flex-1">
+        <div className="mb-3 mb:mb-4">
+          <label className="block text-purple-100 text-xs md:text-sm font-medium mb-1.5 md:mb-2">
             Title <span className="text-red-400">*</span>
           </label>
           <input
@@ -60,7 +60,7 @@ const TaskForm = ({ onTaskCreated }) => {
             }}
             placeholder="Enter task title"
             disabled={isSubmitting}
-            className={`w-full bg-[#09070f] text-white border rounded-lg px-4 py-2.5 text-sm placeholder:text-purple-300/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 ${
+            className={`w-full bg-[#09070f] text-white border rounded-lg px-3 md:px-4 py-2 md:py-2.5 text-sm placeholder:text-purple-300/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 ${
               titleError ? 'border-red-500' : 'border-purple-900/50'
             }`}
           />
@@ -69,8 +69,8 @@ const TaskForm = ({ onTaskCreated }) => {
           )}
         </div>
 
-        <div className="mb-6">
-          <label className="block text-purple-100 text-sm font-medium mb-2">
+        <div className="mb-4 md:mb-6 flex-1">
+          <label className="block text-purple-100 text-xs md:text-sm font-medium mb-1.5 md:mb-2">
             Description <span className="text-red-400">*</span>
           </label>
           <textarea
@@ -82,7 +82,7 @@ const TaskForm = ({ onTaskCreated }) => {
             placeholder="Enter task description"
             disabled={isSubmitting}
             rows={4}
-            className={`w-full bg-[#09070f] text-white border rounded-lg px-4 py-2.5 text-sm placeholder:text-purple-300/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 resize-none ${
+            className={`w-full bg-[#09070f] text-white border rounded-lg px-3 md:px-4 py-2 md:py-2.5 text-sm placeholder:text-purple-300/30 focus:outline-none focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500 transition-all duration-200 resize-none ${
               descriptionError ? 'border-red-500' : 'border-purple-900/50'
             }`}
           />
@@ -94,7 +94,7 @@ const TaskForm = ({ onTaskCreated }) => {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-lg text-sm transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30 disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-2.5 rounded-lg text-sm transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30 disabled:opacity-50 disabled:cursor-not-allowed mt-auto"
         >
           {isSubmitting ? 'Adding...' : 'Add Task'}
         </button>

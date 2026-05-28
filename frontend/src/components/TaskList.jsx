@@ -3,12 +3,12 @@ import TaskCard from './TaskCard';
 
 const TaskList = ({ tasks, onMarkComplete }) => {
   return (
-    <div className="relative flex-1 bg-[#1a1335]/95 border border-purple-900/40 rounded-2xl p-6 shadow-xl hover:shadow-violet-500/10 hover:border-violet-500/40 transition-all duration-300">
-      <div className="relative z-10">
-        <h2 className="text-white text-lg font-semibold mb-1">
+    <div className="relative flex-1 bg-[#1a1335]/95 border border-purple-900/40 rounded-2xl p-4 md:p-6 shadow-xl hover:shadow-violet-500/10 hover:border-violet-500/40 transition-all duration-300 flex flex-col">
+      <div className="relative z-10 flex flex-col flex-1">
+        <h2 className="text-white text-base md:text-lg font-semibold mb-1">
           Latest Tasks
         </h2>
-        <p className="text-purple-200/60 text-xs mb-6">
+        <p className="text-purple-200/60 text-xs mb-4 md:mb-6">
           Showing latest 5 active tasks
         </p>
 
