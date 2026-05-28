@@ -1,0 +1,23 @@
+{
+  "name": "todo-task-manager",
+  "version": "1.0.0",
+  "description": "to-do web application that dynamically displays the 5 most recent active tasks with complete functionality.",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sandevnee/todo-task-manager.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Sandevnee/todo-task-manager/issues"
+  },
+  "homepage": "https://github.com/Sandevnee/todo-task-manager#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.60.0",
+    "@types/node": "^25.9.1"
+  }
+}
