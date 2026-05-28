@@ -11,7 +11,7 @@ const TaskCard = ({ task, onMarkComplete }) => {
       </div>
       <button
         onClick={() => onMarkComplete(task.id)}
-        className="flex-shrink-0 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white text-xs font-semibold px-4 py-1.5 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30"
+        className="flex-shrink-0 bg-green-500 hover:bg-green-600 text-white text-xs font-semibold px-4 py-1.5 rounded-lg transition-all duration-200 hover:shadow-lg hover:shadow-green-500/30"
       >
         Done
       </button>
