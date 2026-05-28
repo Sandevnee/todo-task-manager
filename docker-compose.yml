@@ -31,13 +31,15 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    command: sh -c "npx prisma migrate deploy && node src/server.js"
+    command: sh -c "npx prisma generate && npx prisma migrate deploy && node src/server.js"
 
   frontend:
     build:
       context: ./frontend
       dockerfile: Dockerfile
     container_name: todo_frontend
+    environment:
+      - VITE_API_URL=http://localhost:3000/api
     ports:
       - "5173:5173"
     depends_on:
