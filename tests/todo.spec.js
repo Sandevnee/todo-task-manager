@@ -75,13 +75,21 @@ test.describe('Todo Task Manager', () => {
     await expect(page.getByText('Task to complete')).not.toBeVisible();
   });
 
-
   test('should show empty state when no tasks', async ({ page, request }) => {
-    const response = await request.get('http://localhost:3000/api/tasks');
-    const body = await response.json();
+    let hasActiveTasks = true;
 
-    for (const task of body.data) {
-      await request.patch(`http://localhost:3000/api/tasks/${task.id}/done`);
+    while (hasActiveTasks) {
+      const response = await request.get('http://localhost:3000/api/tasks');
+      const body = await response.json();
+
+      if (!body.data || body.data.length === 0) {
+        hasActiveTasks = false;
+        break;
+      }
+
+      for (const task of body.data) {
+        await request.patch(`http://localhost:3000/api/tasks/${task.id}/done`);
+      }
     }
 
     await page.reload();
