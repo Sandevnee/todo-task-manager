@@ -104,6 +104,7 @@ npx playwright test
 ```
 
 ## Project Structure
+```
 todo-task-manager/
 ├── backend/
 │   ├── prisma/
@@ -131,6 +132,7 @@ todo-task-manager/
 ├── docker-compose.yml
 ├── playwright.config.js
 └── README.md
+```
 
 ## API Endpoints
 
