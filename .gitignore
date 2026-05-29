@@ -11,6 +11,11 @@ node_modules/
 dist/
 build/
 
+# Test coverage
+coverage/
+backend/coverage/
+frontend/coverage/
+
 # OS
 .DS_Store
 

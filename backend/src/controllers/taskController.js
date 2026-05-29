@@ -37,8 +37,15 @@ const getRecentTasks = async (req, res, next) => {
 const markTaskComplete = async (req, res, next) => {
   try {
     const { id } = req.params;
+    const taskId = Number(id);
 
-    const task = await taskService.markTaskComplete(Number(id));
+    if (!Number.isInteger(taskId) || taskId <= 0) {
+      const error = new Error('Invalid task id');
+      error.statusCode = 400;
+      throw error;
+    }
+
+    const task = await taskService.markTaskComplete(taskId);
 
     res.status(200).json({
       success: true,
@@ -48,6 +55,7 @@ const markTaskComplete = async (req, res, next) => {
     next(err);
   }
 };
+
 
 module.exports = {
   createTask,
