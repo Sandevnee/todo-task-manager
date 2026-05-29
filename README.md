@@ -15,10 +15,10 @@ The application allows users to create tasks, view the 5 most recent active task
 
 ## Requirements
 
-- Docker Desktop
+- Docker and Docker Compose
 - Git
 
-Installation of Node.js, PostgreSQL, or any other tools are not needed.
+Node.js, PostgreSQL, Prisma, and other project dependencies are not required to run the application because they are handled inside Docker containers.
 
 ## Getting Started
 
@@ -32,11 +32,12 @@ cd todo-task-manager
 ### 2. Start the application
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ```
 
 This will:
 - Pull and start a PostgreSQL 15 database
+- Create the `tododb` database inside Docker
 - Run database migrations automatically
 - Start the Express backend API on port 3000
 - Start the React frontend on port 5173
@@ -49,15 +50,26 @@ http://localhost:5173
 ### Stopping the application
 
 ```bash
+docker compose down
+```
+
+Or, for older Docker Compose versions:
+
+```bash
 docker-compose down
 ```
 
 ## Running Tests
 
+The application can be built and run using Docker only.
+
+The following test commands are for running tests locally and require Node.js/npm to be installed on the local machine.
+
 ### Backend Tests (Unit + Integration)
 
 ```bash
 cd backend
+npm install
 npm test
 ```
 
@@ -72,14 +84,22 @@ npm run test:coverage
 
 ```bash
 cd frontend
+npm install
 npm run test:run
 ```
 
 ### End-to-End Tests (Playwright)
 
-Make sure the application is running via Docker first, then:
+Make sure the application is running via Docker first:
 
 ```bash
+docker compose up --build
+```
+Then run:
+
+```bash
+npm install
+npx playwright install
 npx playwright test
 ```
 
@@ -98,15 +118,18 @@ todo-task-manager/
 │   │   ├── app.js               # Express app setup
 │   │   ├── server.js            # Server entry point
 │   │   └── prismaClient.js      # Prisma client instance
-│   └── Dockerfile
+│   ├── Dockerfile
+│   └── package.json
 ├── frontend/
 │   ├── src/
 │   │   ├── components/          # React components
 │   │   ├── services/            # API service layer
 │   │   └── tests/               # Component tests
-│   └── Dockerfile
+│   ├── Dockerfile
+│   └── package.json
 ├── tests/                       # Playwright E2E tests
 ├── docker-compose.yml
+├── playwright.config.js
 └── README.md
 
 ## API Endpoints
@@ -125,4 +148,4 @@ todo-task-manager/
 - Form validation with per-field error messages
 - Success and error notifications via SweetAlert2
 - Responsive design for mobile and desktop
-- Full test coverage across unit, integration and E2E tests
+- Unit, integration, frontend component, and E2E tests included

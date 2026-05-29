@@ -14,7 +14,7 @@ const App = () => {
       const response = await getRecentTasks();
       setTasks(response.data);
     } catch (err) {
-      setError('Failed to fetch tasks. Please try again.');
+      console.error('Failed to fetch tasks:', err);
     }
   };
 

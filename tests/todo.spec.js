@@ -48,8 +48,6 @@ test.describe('Todo Task Manager', () => {
     await page.getByRole('button', { name: 'Add Task' }).click();
 
     await expect(page.getByText('Task Added!')).toBeVisible();
-    await page.waitForTimeout(2500);
-    
     await expect(page.locator('.task-card-title, h3').filter({ hasText: 'Buy groceries' }).first()).toBeVisible();
     await expect(page.getByText('Milk, eggs, bread')).toBeVisible();
   });
@@ -59,8 +57,7 @@ test.describe('Todo Task Manager', () => {
     await page.getByPlaceholder('Enter task description').fill('Milk, eggs, bread');
     await page.getByRole('button', { name: 'Add Task' }).click();
 
-    await page.waitForTimeout(2500);
-
+    await expect(page.getByText('Task Added!')).toBeVisible();
     await expect(page.getByPlaceholder('Enter task title')).toHaveValue('');
     await expect(page.getByPlaceholder('Enter task description')).toHaveValue('');
   });
@@ -70,22 +67,21 @@ test.describe('Todo Task Manager', () => {
     await page.getByPlaceholder('Enter task description').fill('This will be completed');
     await page.getByRole('button', { name: 'Add Task' }).click();
 
-    await page.waitForTimeout(2500);
+    await expect(page.locator('.task-card-title, h3').filter({ hasText: 'Task to complete' }).first()).toBeVisible();
 
     await page.getByRole('button', { name: 'Done' }).first().click();
 
     await expect(page.getByText('Task Completed!')).toBeVisible();
-    await page.waitForTimeout(2500);
     await expect(page.getByText('Task to complete')).not.toBeVisible();
   });
 
   test('should show empty state when no tasks', async ({ page }) => {
     const doneButtons = page.getByRole('button', { name: 'Done' });
     const count = await doneButtons.count();
-    
+
     for (let i = 0; i < count; i++) {
-        await doneButtons.first().click();
-        await page.waitForTimeout(2500);
+      await doneButtons.first().click();
+      await expect(page.getByText('Task Completed!')).toBeVisible();
     }
 
     await expect(page.getByText('No active tasks yet')).toBeVisible();
@@ -96,7 +92,7 @@ test.describe('Todo Task Manager', () => {
       await page.getByPlaceholder('Enter task title').fill(`Task ${i}`);
       await page.getByPlaceholder('Enter task description').fill(`Description ${i}`);
       await page.getByRole('button', { name: 'Add Task' }).click();
-      await page.waitForTimeout(2500);
+      await expect(page.getByText('Task Added!')).toBeVisible();
     }
 
     const doneButtons = page.getByRole('button', { name: 'Done' });

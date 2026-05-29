@@ -110,6 +110,14 @@ describe('Task Routes', () => {
       expect(response.body.data.isCompleted).toBe(true);
     });
 
+    it('should return 400 if task id is invalid', async () => {
+      const response = await request(app).patch('/api/tasks/abc/done');
+
+      expect(response.status).toBe(400);
+      expect(response.body.success).toBe(false);
+      expect(response.body.message).toBe('Invalid task id');
+    });
+
     it('should return 500 if database fails', async () => {
       prisma.task.update.mockRejectedValue(new Error('Database error'));
 
@@ -118,5 +126,6 @@ describe('Task Routes', () => {
       expect(response.status).toBe(500);
       expect(response.body.success).toBe(false);
     });
+
   });
 });
