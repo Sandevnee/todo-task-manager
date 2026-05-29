@@ -75,14 +75,16 @@ test.describe('Todo Task Manager', () => {
     await expect(page.getByText('Task to complete')).not.toBeVisible();
   });
 
-  test('should show empty state when no tasks', async ({ page }) => {
-    const doneButtons = page.getByRole('button', { name: 'Done' });
-    const count = await doneButtons.count();
 
-    for (let i = 0; i < count; i++) {
-      await doneButtons.first().click();
-      await expect(page.getByText('Task Completed!')).toBeVisible();
+  test('should show empty state when no tasks', async ({ page, request }) => {
+    const response = await request.get('http://localhost:3000/api/tasks');
+    const body = await response.json();
+
+    for (const task of body.data) {
+      await request.patch(`http://localhost:3000/api/tasks/${task.id}/done`);
     }
+
+    await page.reload();
 
     await expect(page.getByText('No active tasks yet')).toBeVisible();
   });

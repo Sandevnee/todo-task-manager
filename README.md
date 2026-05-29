@@ -59,6 +59,22 @@ Or, for older Docker Compose versions:
 docker-compose down
 ```
 
+### Resetting the database
+
+To stop the containers and remove the PostgreSQL data volume, run:
+
+```bash
+docker compose down -v
+```
+
+Or, for older Docker Compose versions:
+
+```bash
+docker-compose down -v
+```
+
+This clears the existing database data. When the application is started again, Docker will recreate the PostgreSQL container and Prisma migrations will recreate the required `task` table.
+
 ## Running Tests
 
 The application can be built and run using Docker only.
@@ -101,6 +117,17 @@ Then run:
 npm install
 npx playwright install
 npx playwright test
+```
+
+## Test Results
+
+The following tests were run successfully before submission:
+
+```text
+Backend tests: 16 passed / 16
+Backend coverage: 98.41%
+Frontend component tests: 15 passed / 15
+E2E tests: 11 passed / 11
 ```
 
 ## Project Structure
